@@ -31,4 +31,13 @@ describe('<Logo />', () => {
     const svg = screen.getByLabelText(/Won Games/i).parentElement
     expect(svg).toHaveStyle({ width: '11rem' })
   })
+
+  it('should render a bigger logo without text on mobile if hideText', () => {
+    renderWithTheme(<Logo hideText />)
+
+    const svg = screen.getByLabelText(/Won Games/i).parentElement
+    expect(svg).toHaveStyleRule('width', '5.8rem', {
+      media: '(max-width: 768px)',
+    })
+  })
 })
