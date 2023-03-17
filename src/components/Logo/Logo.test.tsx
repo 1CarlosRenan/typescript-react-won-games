@@ -17,4 +17,18 @@ describe('<Logo />', () => {
     const svg = screen.getByLabelText(/Won Games/i).parentElement
     expect(svg).toHaveStyle({ color: '#030517' })
   })
+
+  it('should render a bigger logo', () => {
+    renderWithTheme(<Logo size='large' />)
+
+    const svg = screen.getByLabelText(/Won Games/i).parentElement
+    expect(svg).toHaveStyle({ width: '20rem' })
+  })
+
+  it('should render a normal logo when size is default', () => {
+    renderWithTheme(<Logo />)
+
+    const svg = screen.getByLabelText(/Won Games/i).parentElement
+    expect(svg).toHaveStyle({ width: '11rem' })
+  })
 })
